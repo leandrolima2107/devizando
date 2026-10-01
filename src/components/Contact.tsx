@@ -32,6 +32,10 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
     return next;
   }
 
+  function clearError(field: keyof FieldErrors) {
+    setErrors((prev) => ({ ...prev, [field]: undefined }));
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -130,7 +134,15 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
                 <label className={styles.label} htmlFor="name">
                   Nome
                 </label>
-                <input className={styles.input} id="name" name="name" type="text" autoComplete="name" required />
+                <input
+                  className={styles.input}
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  onChange={() => clearError('name')}
+                />
                 {errors.name && <p className={styles.error}>{errors.name}</p>}
               </div>
 
@@ -138,7 +150,15 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
                 <label className={styles.label} htmlFor="email">
                   E-mail
                 </label>
-                <input className={styles.input} id="email" name="email" type="email" autoComplete="email" required />
+                <input
+                  className={styles.input}
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  onChange={() => clearError('email')}
+                />
                 {errors.email && <p className={styles.error}>{errors.email}</p>}
               </div>
             </div>
@@ -155,7 +175,14 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
                 <label className={styles.label} htmlFor="service">
                   Serviço de interesse
                 </label>
-                <select className={styles.select} id="service" name="service" defaultValue="" required>
+                <select
+                  className={styles.select}
+                  id="service"
+                  name="service"
+                  defaultValue=""
+                  required
+                  onChange={() => clearError('service')}
+                >
                   <option value="" disabled>
                     Selecione…
                   </option>
@@ -179,6 +206,7 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
                 id="message"
                 name="message"
                 required
+                onChange={() => clearError('message')}
                 placeholder="Descreva o que você precisa, o momento do negócio e algum prazo que exista."
               />
               {errors.message && <p className={styles.error}>{errors.message}</p>}
@@ -192,7 +220,12 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
 
             <div className={styles.field}>
               <label className={styles.consent} htmlFor="consent">
-                <input id="consent" name="consent" type="checkbox" />
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  onChange={() => clearError('consent')}
+                />
                 <span>
                   Concordo com o uso dos dados enviados para resposta deste contato, conforme a{' '}
                   <a href="/privacidade">política de privacidade</a>.

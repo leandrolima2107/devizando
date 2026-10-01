@@ -110,7 +110,7 @@
 }
 
 .sceneHost {
-  height: clamp(360px, 46vw, 540px);
+  height: clamp(330px, 40vw, 460px);
 }
 
 .sceneFallback {

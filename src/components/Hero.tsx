@@ -64,7 +64,7 @@ export default function Hero() {
     : generalCaption;
 
   return (
-    <section className={styles.hero} id="inicio">
+    <section className={`${styles.hero} section--dark`} id="inicio">
       <div className={`container ${styles.grid}`}>
         <div>
           <p className="eyebrow">Estúdio de desenvolvimento</p>

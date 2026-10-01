@@ -24,12 +24,12 @@ function Rig({ reduced }: { reduced: boolean }) {
 
   useFrame(() => {
     if (reduced) {
-      camera.position.set(0, 0.45, 6.2);
+      camera.position.set(0, 0.35, 5.3);
       camera.lookAt(target);
       return;
     }
     camera.position.x += (pointer.x * 0.9 - camera.position.x) * 0.035;
-    camera.position.y += (0.45 + pointer.y * 0.55 - camera.position.y) * 0.035;
+    camera.position.y += (0.35 + pointer.y * 0.55 - camera.position.y) * 0.035;
     camera.lookAt(target);
   });
 
@@ -75,7 +75,7 @@ function Part({ focused, reduced, children, position, floatAmp = 0.08, speed = 0
     const group = ref.current;
     if (!group) return;
     const t = state.clock.elapsedTime;
-    const wanted = focused ? 1.1 : 0.94;
+    const wanted = focused ? 1.12 : 1;
     group.scale.lerp(new THREE.Vector3(wanted, wanted, wanted), 0.045);
     if (!reduced) {
       group.position.y = base.y + Math.sin(t * speed + base.x) * floatAmp;
@@ -97,7 +97,7 @@ function Monitor({ focused, reduced, kind }: { focused: boolean; reduced: boolea
   return (
     <Part focused={focused} reduced={reduced} position={[0, 0.25, -0.2]} floatAmp={0.07} speed={0.5}>
       <RoundedBox args={[3.05, 1.95, 0.12]} radius={0.05} smoothness={4} castShadow={false}>
-        <meshStandardMaterial color="#20262e" metalness={0.55} roughness={0.42} />
+        <meshStandardMaterial color="#2c353f" metalness={0.55} roughness={0.42} />
       </RoundedBox>
       <mesh position={[0, 0, 0.075]}>
         <planeGeometry args={[2.82, 1.72]} />
@@ -105,11 +105,11 @@ function Monitor({ focused, reduced, kind }: { focused: boolean; reduced: boolea
       </mesh>
       <mesh position={[0, -1.16, -0.1]}>
         <cylinderGeometry args={[0.07, 0.11, 0.5, 18]} />
-        <meshStandardMaterial color="#20262e" metalness={0.5} roughness={0.4} />
+        <meshStandardMaterial color="#2c353f" metalness={0.5} roughness={0.4} />
       </mesh>
       <mesh position={[0, -1.42, -0.1]} rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.52, 0.52, 0.07, 28]} />
-        <meshStandardMaterial color="#20262e" metalness={0.5} roughness={0.4} />
+        <meshStandardMaterial color="#2c353f" metalness={0.5} roughness={0.4} />
       </mesh>
     </Part>
   );
@@ -123,7 +123,7 @@ function Phone({ focused, reduced }: { focused: boolean; reduced: boolean }) {
     <Part focused={focused} reduced={reduced} position={[-2.25, -0.35, 1.05]} floatAmp={0.11} speed={0.75}>
       <group rotation={[0, 0.38, 0.06]}>
         <RoundedBox args={[0.78, 1.6, 0.09]} radius={0.12} smoothness={4}>
-          <meshStandardMaterial color="#20262e" metalness={0.5} roughness={0.4} />
+          <meshStandardMaterial color="#2c353f" metalness={0.5} roughness={0.4} />
         </RoundedBox>
         <mesh position={[0, 0, 0.052]}>
           <planeGeometry args={[0.66, 1.46]} />
@@ -139,7 +139,7 @@ function Panel({ focused, reduced }: { focused: boolean; reduced: boolean }) {
     <Part focused={focused} reduced={reduced} position={[2.35, 0.55, 0.65]} floatAmp={0.1} speed={0.62}>
       <group rotation={[0.12, -0.55, -0.05]}>
         <RoundedBox args={[1.55, 1.1, 0.08]} radius={0.06} smoothness={4}>
-          <meshStandardMaterial color="#242b34" metalness={0.45} roughness={0.5} />
+          <meshStandardMaterial color="#2f3945" metalness={0.45} roughness={0.5} />
         </RoundedBox>
         <mesh position={[-0.32, 0.22, 0.05]}>
           <planeGeometry args={[0.72, 0.34]} />
@@ -147,7 +147,7 @@ function Panel({ focused, reduced }: { focused: boolean; reduced: boolean }) {
         </mesh>
         <mesh position={[0.28, 0.22, 0.05]}>
           <planeGeometry args={[0.36, 0.34]} />
-          <meshBasicMaterial color="#39434f" toneMapped={false} />
+          <meshBasicMaterial color="#4d5967" toneMapped={false} />
         </mesh>
         <mesh position={[-0.15, -0.22, 0.05]}>
           <planeGeometry args={[1.1, 0.3]} />
@@ -210,11 +210,11 @@ function NodeNetwork({ focused, reduced, count = 5 }: { focused: boolean; reduce
         </mesh>
       ))}
       {nodes.map((p, i) => {
-        return <Line key={`l${i}`} points={[[0, 0, 0], p]} color="#39434f" lineWidth={1.2} transparent opacity={0.7} />;
+        return <Line key={`l${i}`} points={[[0, 0, 0], p]} color="#4d5967" lineWidth={1.2} transparent opacity={0.7} />;
       })}
       {nodes.map((p, i) => {
         const next = nodes[(i + 1) % nodes.length]!;
-        return <Line key={`c${i}`} points={[p, next]} color="#39434f" lineWidth={1} transparent opacity={0.45} />;
+        return <Line key={`c${i}`} points={[p, next]} color="#4d5967" lineWidth={1} transparent opacity={0.45} />;
       })}
     </Part>
   );
@@ -226,7 +226,7 @@ function Servers({ focused, reduced }: { focused: boolean; reduced: boolean }) {
       {[0, 1, 2].map((i) => (
         <group key={i} position={[0, i * 0.36, 0]}>
           <RoundedBox args={[1.5, 0.3, 0.72]} radius={0.05} smoothness={4}>
-            <meshStandardMaterial color="#242b34" metalness={0.5} roughness={0.45} />
+            <meshStandardMaterial color="#2f3945" metalness={0.5} roughness={0.45} />
           </RoundedBox>
           <mesh position={[0.58, 0, 0.37]}>
             <circleGeometry args={[0.035, 12]} />
@@ -242,7 +242,7 @@ function Halo() {
   return (
     <mesh position={[0, 0.15, -1.9]} rotation={[0.35, 0, 0]}>
       <torusGeometry args={[3.1, 0.012, 8, 96]} />
-      <meshBasicMaterial color="#39434f" transparent opacity={0.55} toneMapped={false} />
+      <meshBasicMaterial color="#4d5967" transparent opacity={0.55} toneMapped={false} />
     </mesh>
   );
 }
@@ -256,10 +256,10 @@ function SceneContents({ active, reduced }: { active: ServiceKey; reduced: boole
     <>
       <Rig reduced={reduced} />
 
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[4, 5.5, 4]} intensity={2.1} color="#ffffff" />
-      <pointLight position={[-4.5, 2.2, 3]} intensity={26} distance={16} color={ACCENT} />
-      <pointLight position={[4, -2, 3.5]} intensity={12} distance={14} color="#7fa8ff" />
+      <ambientLight intensity={0.9} />
+      <directionalLight position={[4, 5.5, 4]} intensity={2.8} color="#ffffff" />
+      <pointLight position={[-4.5, 2.2, 3]} intensity={38} distance={18} color={ACCENT} />
+      <pointLight position={[4, -2, 3.5]} intensity={18} distance={16} color="#8fb4ff" />
 
       <Halo />
 
@@ -278,7 +278,7 @@ export default function Scene3D({ active, reduced, running }: Props) {
     <Canvas
       dpr={[1, 1.75]}
       frameloop={running ? 'always' : 'never'}
-      camera={{ position: [0, 0.45, 6.2], fov: 35 }}
+      camera={{ position: [0, 0.35, 5.3], fov: 38 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       style={{ width: '100%', height: '100%' }}
       aria-hidden="true"
