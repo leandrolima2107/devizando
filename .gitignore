@@ -1,0 +1,29 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.*
+
+# Build
+.next/
+out/
+build/
+dist/
+
+# Debug / sistema
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+*.pem
+
+# Ambiente local (nunca versionar segredos)
+.env
+.env*.local
+.env.production
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Editor
+.vscode/
+.idea/
