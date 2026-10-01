@@ -6,8 +6,8 @@
  */
 
 const ACCENT = '#ff5b24';
-const PANEL = '#18222d';
-const LINE = '#45525f';
+const PANEL = '#202d3b';
+const LINE = '#596877';
 const TEXT = '#a8b4c0';
 
 function base(w: number, h: number) {
@@ -36,7 +36,7 @@ function base(w: number, h: number) {
 }
 
 function windowChrome(ctx: CanvasRenderingContext2D, w: number) {
-  ctx.fillStyle = '#161c24';
+  ctx.fillStyle = '#222c38';
   ctx.fillRect(0, 0, w, 34);
   for (let i = 0; i < 3; i++) {
     ctx.beginPath();
@@ -62,21 +62,21 @@ export function makeScreenTexture(kind: ScreenKind): HTMLCanvasElement {
     ctx.fillRect(40, 126, 110, 12);
     ctx.fillStyle = ACCENT;
     ctx.fillRect(40, 168, 96, 30);
-    ctx.fillStyle = '#243040';
+    ctx.fillStyle = '#2b3a4a';
     ctx.fillRect(300, 70, 172, 190);
     ctx.fillStyle = LINE;
     ctx.fillRect(316, 86, 140, 80);
     ctx.fillRect(316, 180, 140, 10);
     ctx.fillRect(316, 198, 100, 10);
   } else if (kind === 'sistemas') {
-    ctx.fillStyle = '#243040';
+    ctx.fillStyle = '#2b3a4a';
     ctx.fillRect(0, 34, 96, h - 34);
     ctx.fillStyle = ACCENT;
     ctx.fillRect(18, 60, 60, 10);
     ctx.fillStyle = LINE;
     for (let i = 0; i < 4; i++) ctx.fillRect(18, 92 + i * 26, 60, 8);
     for (let i = 0; i < 3; i++) {
-      ctx.fillStyle = '#243040';
+      ctx.fillStyle = '#2b3a4a';
       ctx.fillRect(124 + i * 122, 62, 106, 62);
     }
     ctx.fillStyle = LINE;
@@ -117,11 +117,11 @@ export function makeScreenTexture(kind: ScreenKind): HTMLCanvasElement {
     });
   } else if (kind === 'ia') {
     // balões de conversa
-    ctx.fillStyle = '#243040';
+    ctx.fillStyle = '#2b3a4a';
     ctx.fillRect(48, 72, 240, 54);
     ctx.fillStyle = ACCENT;
     ctx.fillRect(224, 156, 240, 54);
-    ctx.fillStyle = '#243040';
+    ctx.fillStyle = '#2b3a4a';
     ctx.fillRect(48, 240, 180, 44);
     ctx.fillStyle = LINE;
     ctx.fillRect(66, 90, 180, 8);
@@ -146,7 +146,7 @@ export function makeScreenTexture(kind: ScreenKind): HTMLCanvasElement {
   } else {
     // infraestrutura: racks de servidor
     for (let i = 0; i < 3; i++) {
-      ctx.fillStyle = '#243040';
+      ctx.fillStyle = '#2b3a4a';
       ctx.fillRect(60 + i * 140, 70, 112, 210);
       for (let j = 0; j < 5; j++) {
         ctx.fillStyle = LINE;
@@ -168,7 +168,7 @@ export function makePhoneTexture(): HTMLCanvasElement {
   const { canvas, ctx } = base(w, h);
   ctx.fillStyle = ACCENT;
   ctx.fillRect(24, 44, 130, 18);
-  ctx.fillStyle = '#243040';
+  ctx.fillStyle = '#2b3a4a';
   ctx.fillRect(24, 110, 190, 66);
   ctx.fillRect(56, 196, 176, 66);
   ctx.fillRect(24, 282, 150, 50);
@@ -179,7 +179,7 @@ export function makePhoneTexture(): HTMLCanvasElement {
   ctx.fillRect(72, 236, 96, 8);
   ctx.fillRect(40, 304, 110, 8);
   // campo de mensagem
-  ctx.fillStyle = '#243040';
+  ctx.fillStyle = '#2b3a4a';
   ctx.fillRect(24, 420, 208, 52);
   ctx.beginPath();
   ctx.arc(206, 446, 16, 0, Math.PI * 2);

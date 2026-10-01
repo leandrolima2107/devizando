@@ -104,8 +104,8 @@
   border: 1px solid var(--ink-line);
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(75% 75% at 50% 30%, rgba(255, 255, 255, 0.06), transparent 72%),
-    rgba(255, 255, 255, 0.02);
+    radial-gradient(80% 80% at 50% 28%, rgba(255, 255, 255, 0.11), transparent 74%),
+    rgba(255, 255, 255, 0.05);
   overflow: hidden;
 }
 
