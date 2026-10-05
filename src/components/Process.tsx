@@ -3,25 +3,33 @@ import styles from './Process.module.css';
 
 export default function Process() {
   return (
-    <section className="section section--tint" id="processo">
+    <section className="section" id="processo">
       <div className="container">
-        <div className="section-head section-head--split">
+        <div className="section-head">
           <div>
             <p className="eyebrow">Como trabalhamos</p>
-            <h2 className="section-title">Seis etapas, sem surpresa no meio do caminho</h2>
+            <h2 className="section-title">
+              Um processo <span className="serif grad-text">transparente</span>,
+              do primeiro contato ao suporte
+            </h2>
           </div>
           <p className="section-lead">
-            Você acompanha cada etapa e aprova antes de avançar. O processo é o mesmo para uma
-            landing page e para um sistema completo — só muda o tamanho de cada passo.
+            Sem caixa-preta e sem surpresa: cada etapa tem entrega combinada antes de
+            começar, e você acompanha o projeto enquanto ele acontece.
           </p>
         </div>
 
         <ol className={styles.steps}>
-          {processSteps.map((item) => (
-            <li key={item.step} className={`reveal ${styles.step}`}>
-              <p className={styles.stepNumber}>{item.step}</p>
-              <h3 className={styles.stepTitle}>{item.title}</h3>
-              <p className={styles.stepText}>{item.description}</p>
+          {processSteps.map((step, index) => (
+            <li
+              key={step.step}
+              className={`reveal ${styles.step}`}
+              style={{ '--reveal-delay': `${index * 70}ms` } as React.CSSProperties}
+            >
+              <span className={styles.node} aria-hidden="true" />
+              <span className={styles.number}>{step.step}</span>
+              <h3 className={styles.title}>{step.title}</h3>
+              <p className={styles.description}>{step.description}</p>
             </li>
           ))}
         </ol>

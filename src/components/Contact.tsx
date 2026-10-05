@@ -90,8 +90,12 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
       <div className={`container ${styles.grid}`}>
         <div className="reveal">
           <p className="eyebrow">Contato</p>
-          <h2 className="section-title">Vamos conversar sobre o seu projeto</h2>
-          <p className="section-lead">
+          <h2 className={styles.headline}>
+            Vamos tirar o seu projeto
+            <br />
+            <span className="serif grad-text">do papel</span>
+          </h2>
+          <p className={styles.lead}>
             Conte o que você precisa resolver. Respondemos pelo e-mail informado, com os
             próximos passos e as perguntas que faltam para montar a proposta.
           </p>
@@ -145,7 +149,6 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
                 />
                 {errors.name && <p className={styles.error}>{errors.name}</p>}
               </div>
-
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="email">
                   E-mail
@@ -170,7 +173,6 @@ export default function Contact({ formEnabled }: { formEnabled: boolean }) {
                 </label>
                 <input className={styles.input} id="company" name="company" type="text" autoComplete="organization" />
               </div>
-
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="service">
                   Serviço de interesse

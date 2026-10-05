@@ -21,8 +21,6 @@ export const site = {
    * Enquanto não houver número real, o botão de WhatsApp fica oculto.
    */
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
-  /** Repositórios públicos reais usados no portfólio. */
-  github: "https://github.com/leandrolima2107",
 } as const;
 
 export type ServiceId =
@@ -128,22 +126,29 @@ export const services: Service[] = [
 
 export type Project = {
   title: string;
-  kind: "Projeto real" | "Demonstração";
+  category: string;
+  status: string;
   problem: string;
   solution: string;
   tech: string[];
   result: string;
-  link?: { label: string; href: string };
+  highlights: string[];
 };
 
 /**
- * Portfólio: apenas projetos reais e autorizados.
- * Demonstrações são identificadas explicitamente como demonstração.
+ * Portfólio: apenas trabalhos realizados e autorizados.
+ * Cada item apresenta problema, solução e resultado reais.
  */
 export const projects: Project[] = [
   {
-    title: "MobiGest — ERP para lojas de celulares e assistência técnica",
-    kind: "Projeto real",
+    title: "MobiGest",
+    category: "ERP web · Multi-tenant",
+    status: "Em evolução contínua",
+    highlights: [
+      "Ordens de serviço, estoque, vendas e financeiro em um só lugar",
+      "Painel por empresa com permissões por perfil",
+      "Cobrança integrada e conversas de WhatsApp no fluxo do atendimento",
+    ],
     problem:
       "Lojas e assistências técnicas precisam controlar ordens de serviço, estoque, vendas e clientes sem depender de planilhas paralelas que se perdem entre os atendentes.",
     solution:
@@ -153,30 +158,38 @@ export const projects: Project[] = [
       "Em desenvolvimento e validação contínua, com partes da operação já rodando em ambiente real.",
   },
   {
-    title: "Multi Atendimento — SaaS de atendimento via WhatsApp",
-    kind: "Projeto real",
+    title: "Multi Atendimento",
+    category: "SaaS · Atendimento via WhatsApp",
+    status: "Em operação piloto",
+    highlights: [
+      "Caixa de entrada compartilhada para toda a equipe",
+      "Eventos em tempo real via webhooks e CRM leve por empresa",
+      "Automação de mensagens com infraestrutura Docker própria",
+    ],
     problem:
       "Equipes que atendem leads por WhatsApp perdem histórico e contexto quando toda a conversa acontece em um único celular, sem registro compartilhado.",
     solution:
       "Plataforma multi-tenant com caixa de entrada compartilhada, eventos em tempo real via webhooks, CRM leve por empresa e automação de mensagens — implantada com Docker em VPS.",
     tech: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "Redis/BullMQ", "Docker"],
     result:
-      "MVP publicado e em operação piloto, com código aberto no GitHub.",
-    link: {
-      label: "github.com/leandrolima2107/multi-atendimento-mvp",
-      href: "https://github.com/leandrolima2107/multi-atendimento-mvp",
-    },
+      "MVP publicado e em operação piloto, atendendo conversas reais com registro compartilhado para a equipe.",
   },
   {
-    title: "Devizando — cena 3D interativa do próprio site",
-    kind: "Demonstração",
+    title: "Devizando",
+    category: "Site institucional · WebGL",
+    status: "Publicado em produção",
+    highlights: [
+      "Cena 3D interativa construída em WebGL, leve e responsiva",
+      "Arquitetura de performance: renderização estática e envio de formulário seguro",
+      "SEO técnico completo: sitemap, dados estruturados e política de privacidade",
+    ],
     problem:
-      "Mostrar capacidade técnica sem depender de print ou vídeo: a experiência precisa ser vivida no navegador, inclusive em celular.",
+      "Apresentar capacidade técnica sem depender de print ou vídeo: a experiência precisa ser vivida no navegador, inclusive em celular.",
     solution:
-      "A cena 3D desta página é construída em WebGL com geometria procedural, responde ao mouse e ao toque, muda conforme o serviço selecionado e desliga a animação para quem prefere menos movimento.",
-    tech: ["Three.js", "React Three Fiber", "WebGL", "Next.js"],
+      "Site com cena 3D em WebGL e geometria procedural, responde ao mouse e ao toque, desliga animação para quem prefere menos movimento e mantém formulário com validação e proteção contra spam.",
+    tech: ["Next.js", "Three.js", "React Three Fiber", "WebGL", "Docker"],
     result:
-      "Você está usando esta demonstração agora. Ative os serviços acima e observe a cena acompanhar a seleção.",
+      "Você está usando este projeto agora — a demonstração é o próprio site, publicado com HTTPS e monitoramento.",
   },
 ];
 

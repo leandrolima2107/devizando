@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero';
+import Marquee from '@/components/Marquee';
+import Works from '@/components/Works';
 import Services from '@/components/Services';
-import Portfolio from '@/components/Portfolio';
 import Process from '@/components/Process';
 import About from '@/components/About';
 import Faq from '@/components/Faq';
@@ -18,8 +19,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Marquee />
+      <Works />
       <Services />
-      <Portfolio />
       <Process />
       <About />
       <Faq />

@@ -1,44 +1,40 @@
-import { principles } from '@/lib/site';
+import { principles, site } from '@/lib/site';
 import styles from './About.module.css';
 
 export default function About() {
   return (
     <section className="section" id="sobre">
       <div className={`container ${styles.grid}`}>
-        <div className="reveal">
+        <div className={styles.manifesto}>
           <p className="eyebrow">Sobre a Devizando</p>
-          <h2 className="section-title">Tecnologia é meio. O que importa é o problema resolvido.</h2>
+          <h2 className={styles.headline}>
+            Menos promessa.
+            <br />
+            <span className="serif grad-text">Mais engenharia.</span>
+          </h2>
           <p className={styles.lead}>
-            A Devizando é um estúdio de desenvolvimento que trabalha lado a lado com quem decide.
-            A premissa é simples: entender o negócio antes de escrever a primeira linha de código,
-            escolher a tecnologia que faz sentido para o momento da empresa e entregar algo que a
-            sua equipe consiga usar e manter.
+            {site.description} Cada projeto começa pelo problema real da operação — e
+            termina com algo publicado, testado e documentado.
           </p>
-          <p className={styles.lead}>
-            Sem jargão e sem promessa vaga: você sabe o que está sendo feito, quanto custa, qual é
-            o prazo e o que acontece depois da publicação.
+          <p className={styles.quote}>
+            “Um projeto bonito que confunde quem usa não entrega resultado. O acabamento
+            importa tanto quanto a engenharia que existe por trás.”
           </p>
-          <div className={styles.actions}>
-            <a className="btn btn--primary" href="#contato">
-              Conversar sobre um projeto
-            </a>
-            <a className="btn btn--ghost" href="#processo">
-              Ver como trabalhamos
-            </a>
-          </div>
         </div>
 
-        <ul className={styles.principles}>
+        <div className={styles.cards}>
           {principles.map((principle, index) => (
-            <li key={principle.title} className={`reveal ${styles.principle}`}>
-              <h3 className={styles.principleTitle}>
-                <span>0{index + 1}</span>
-                {principle.title}
-              </h3>
-              <p className={styles.principleText}>{principle.description}</p>
-            </li>
+            <article
+              key={principle.title}
+              className={`reveal ${styles.card}`}
+              style={{ '--reveal-delay': `${index * 90}ms` } as React.CSSProperties}
+            >
+              <span className={styles.cardIndex}>0{index + 1}</span>
+              <h3 className={styles.cardTitle}>{principle.title}</h3>
+              <p className={styles.cardText}>{principle.description}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

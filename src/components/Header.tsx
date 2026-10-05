@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 
 const links = [
+  { href: '#projetos', label: 'Trabalhos' },
   { href: '#servicos', label: 'Serviços' },
-  { href: '#projetos', label: 'Projetos' },
   { href: '#processo', label: 'Processo' },
   { href: '#sobre', label: 'Sobre' },
   { href: '#faq', label: 'FAQ' },
@@ -48,7 +48,7 @@ export default function Header() {
         </nav>
 
         <a className={`btn btn--primary ${styles.cta}`} href="#contato">
-          Solicitar orçamento
+          Iniciar projeto
         </a>
 
         <button
@@ -61,19 +61,19 @@ export default function Header() {
         >
           <span />
           <span />
-          <span />
         </button>
       </div>
 
       {open && (
         <nav id="menu-mobile" className={styles.mobileMenu} aria-label="Navegação móvel">
-          {links.map((link) => (
+          {links.map((link, index) => (
             <a
               key={link.href}
               className={styles.mobileLink}
               href={link.href}
               onClick={() => setOpen(false)}
             >
+              <span className={styles.mobileIndex}>0{index + 1}</span>
               {link.label}
             </a>
           ))}
@@ -82,7 +82,7 @@ export default function Header() {
             href="#contato"
             onClick={() => setOpen(false)}
           >
-            Solicitar orçamento
+            Iniciar projeto
           </a>
         </nav>
       )}
